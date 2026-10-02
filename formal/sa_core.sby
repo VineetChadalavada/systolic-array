@@ -1,0 +1,37 @@
+# SymbiYosys job for sa_core.
+#
+#   prove   unbounded proof (k-induction) of P1-P4 and the invariants I1-I8
+#   bmc     bounded check of everything, including P5 (no overflow), from reset
+#   cover   reachability traces for the interesting situations (.vcd)
+#
+#   sby -f formal/sa_core.sby            all three
+#   sby -f formal/sa_core.sby prove      just one
+
+[tasks]
+prove
+bmc
+cover
+
+[options]
+prove: mode prove
+prove: depth 8
+bmc:   mode bmc
+bmc:   depth 30
+cover: mode cover
+cover: depth 40
+
+[engines]
+smtbmc yices
+
+[script]
+bmc: read -define CHECK_OVF
+read -formal -sv sa_pe.sv sa_array.sv sa_core.sv sa_props.sv sa_formal_top.sv
+prep -top sa_formal_top
+async2sync
+
+[files]
+../rtl/sa_pe.sv
+../rtl/sa_array.sv
+../rtl/sa_core.sv
+../tb/sa_props.sv
+sa_formal_top.sv

@@ -1,0 +1,64 @@
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Thu Oct  1 19:48:31 2026
+| Host         : Vineet running 64-bit major release  (build 9200)
+| Command      : report_timing -file E:/hw-projects/systolic-array/syn/reports/vivado_8x8_xc7a100tcsg324-1_dsp/critical_path.rpt -max_paths 1
+| Design       : sa_core
+| Device       : 7a100t-csg324
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (VIOLATED) :        -2.285ns  (required time - arrival time)
+  Source:                 u_array/g_row[1].g_col[6].u_pe/a_bank_o_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Destination:            u_array/g_row[2].g_col[6].u_pe/prod_q_reg/B[5]
+                            (rising edge-triggered cell DSP48E1 clocked by clk  {rise@0.000ns fall@2.000ns period=4.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            4.000ns  (clk rise@4.000ns - clk rise@0.000ns)
+  Data Path Delay:        2.665ns  (logic 0.580ns (21.764%)  route 2.085ns (78.236%))
+  Logic Levels:           1  (LUT3=1)
+  Clock Path Skew:        -0.049ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    0.924ns = ( 4.924 - 4.000 ) 
+    Source Clock Delay      (SCD):    0.973ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=2966, unset)         0.973     0.973    u_array/g_row[1].g_col[6].u_pe/clk
+    SLICE_X29Y88         FDRE                                         r  u_array/g_row[1].g_col[6].u_pe/a_bank_o_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X29Y88         FDRE (Prop_fdre_C_Q)         0.456     1.429 r  u_array/g_row[1].g_col[6].u_pe/a_bank_o_reg/Q
+                         net (fo=57, routed)          1.119     2.548    u_array/g_row[2].g_col[6].u_pe/b_h[1]_7
+    SLICE_X47Y93         LUT3 (Prop_lut3_I2_O)        0.124     2.672 r  u_array/g_row[2].g_col[6].u_pe/sum_i_4/O
+                         net (fo=2, routed)           0.966     3.638    u_array/g_row[2].g_col[6].u_pe/B[5]
+    DSP48_X1Y38          DSP48E1                                      r  u_array/g_row[2].g_col[6].u_pe/prod_q_reg/B[5]
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)        4.000     4.000 r  
+                                                      0.000     4.000 r  clk (IN)
+                         net (fo=2966, unset)         0.924     4.924    u_array/g_row[2].g_col[6].u_pe/clk
+    DSP48_X1Y38          DSP48E1                                      r  u_array/g_row[2].g_col[6].u_pe/prod_q_reg/CLK
+                         clock pessimism              0.000     4.924    
+                         clock uncertainty           -0.035     4.889    
+    DSP48_X1Y38          DSP48E1 (Setup_dsp48e1_CLK_B[5])
+                                                     -3.536     1.353    u_array/g_row[2].g_col[6].u_pe/prod_q_reg
+  -------------------------------------------------------------------
+                         required time                          1.353    
+                         arrival time                          -3.638    
+  -------------------------------------------------------------------
+                         slack                                 -2.285    
+
+
+
+

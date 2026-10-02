@@ -1,0 +1,21 @@
+{
+    "DESIGN_NAME": "sa_core",
+    "VERILOG_FILES": [
+        "dir::../../rtl/sa_pe.sv",
+        "dir::../../rtl/sa_array.sv",
+        "dir::../../rtl/sa_core.sv"
+    ],
+    "PDK": "sky130A",
+    "STD_CELL_LIBRARY": "sky130_fd_sc_hd",
+    "CLOCK_PORT": "clk",
+    "CLOCK_PERIOD": 10.0,
+    "FP_CORE_UTIL": 45,
+    "PL_TARGET_DENSITY_PCT": 55,
+    "RUN_LINTER": false,
+    "SYNTH_PARAMETERS": [
+        "ROWS=4",
+        "COLS=4"
+    ],
+    "PL_RESIZER_HOLD_SLACK_MARGIN": 0.2,
+    "GRT_RESIZER_HOLD_SLACK_MARGIN": 0.2
+}

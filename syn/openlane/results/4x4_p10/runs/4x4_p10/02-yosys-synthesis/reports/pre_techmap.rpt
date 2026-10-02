@@ -1,0 +1,48 @@
+128. Printing statistics.
+
+=== sa_core ===
+
+   Number of wires:               9036
+   Number of wire bits:          11731
+   Number of public wires:         148
+   Number of public wire bits:    2838
+   Number of ports:                 17
+   Number of port bits:            208
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              11063
+     $_ANDNOT_                    3312
+     $_AND_                        212
+     $_DFFE_PN0N_                    8
+     $_DFFE_PN0P_                    7
+     $_DFFE_PN_                    694
+     $_DFFE_PP_                    514
+     $_DFF_PN0_                     20
+     $_MUX_                        280
+     $_NAND_                       800
+     $_NOR_                        527
+     $_NOT_                        334
+     $_ORNOT_                      159
+     $_OR_                         963
+     $_SDFFCE_PN0N_                256
+     $_XNOR_                       750
+     $_XOR_                       2227
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+   Area for cell type $_DFFE_PN_ is unknown!
+   Area for cell type $_DFFE_PP_ is unknown!
+   Area for cell type $_DFF_PN0_ is unknown!
+   Area for cell type $_DFFE_PN0N_ is unknown!
+   Area for cell type $_DFFE_PN0P_ is unknown!
+   Area for cell type $_SDFFCE_PN0N_ is unknown!
+

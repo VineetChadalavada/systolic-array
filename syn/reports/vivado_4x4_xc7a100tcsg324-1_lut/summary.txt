@@ -1,0 +1,1 @@
+xc7a100tcsg324-1 4x4 lut  period 4.00 ns  WNS -2.688 ns  Fmax 150 MHz  LUT 1894  FF 1227  DSP 0
