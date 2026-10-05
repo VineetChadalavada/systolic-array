@@ -26,24 +26,9 @@ including the bugs and the timing work.
 
 ## How it works
 
-```
-            W (weight rows)                 A (activation rows)
-                 |                                  |
-          [bank control]                     [input skew]  lane k delayed k cycles
-                 |                                  |
-                 v                                  v
-        +----------------------------------------------------+
-        |  PE(0,0) -> PE(0,1) -> ... -> PE(0,C-1)            |   activations move right
-        |    |          |                  |                 |
-        |  PE(1,0) -> PE(1,1) -> ...                         |   partial sums move down
-        |    |          |                                    |
-        |   ...                                              |
-        +----------------------------------------------------+
-                 |  one partial sum per column
-          [output deskew]  column n delayed C-1-n cycles
-                 |
-          [2-entry FIFO]  ->  C (result rows)
-```
+<p align="center">
+  <img src="docs/img/architecture.svg" alt="Systolic array: weights load from the W port through bank control into a 4x4 PE grid; activation rows enter through the input skew and move right; partial sums move down into the output deskew, the 2-entry result FIFO and the C port" width="100%">
+</p>
 
 PE(k, n) holds weight `B[k][n]`. Each row of A is fed in with element k on
 lane k, delayed by k cycles, so that it lines up with the partial sum for the
@@ -56,6 +41,10 @@ bank 1) and a two-stage MAC: the product is registered first, and the add
 happens the next cycle. The partial sum from the PE above arrives exactly when
 the registered product is ready, so the vertical chain still moves one row per
 cycle and the skew logic didn't have to change.
+
+<p align="center">
+  <img src="docs/img/pe.svg" alt="Processing element: two weight banks feed a mux selected by the activation's bank tag; stage 1 multiplies into prod_q, stage 2 adds the partial sum from above into ps_o; the activation and its tags are registered and passed right" width="100%">
+</p>
 
 **Double buffering.** While one tile is streaming, the next tile's weights
 load into the other bank. I didn't want a global "swap" cycle, so every
@@ -282,6 +271,7 @@ tb/       tb_sa_core.sv  sa_props.sv
 formal/   sa_core.sby  sa_formal_top.sv  results/
 syn/      vivado_impl.tcl  reports/  openlane/config.json  openlane/results/
 scripts/  lint, sim, regress, formal, mutants, xsim, openlane
+docs/     img/  architecture and PE diagrams (SVG)
 ```
 
 ## What I'd do next

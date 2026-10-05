@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" width="980" height="420" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="aB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker>
+    <marker id="aO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ea580c"/></marker>
+    <marker id="aP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker>
+    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker>
+    <marker id="aR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker>
+  </defs>
+  <style>
+    .h{font-size:20px;font-weight:700;fill:#0f172a}
+    .t{font-size:14px;font-weight:600;fill:#0f172a}
+    .s{font-size:12px;fill:#475569}
+    .m{font-family:Consolas,Menlo,monospace;font-size:12px;fill:#334155}
+    .op{font-size:24px;font-weight:700;fill:#0f172a}
+  </style>
+  <rect x="1" y="1" width="978" height="418" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="30" y="40" class="h">Processing element</text>
+  <text x="30" y="62" class="s">rtl/sa_pe.sv · double-buffered weight, two-stage MAC</text>
+
+  <!-- stage bands -->
+  <rect x="350" y="80" width="370" height="200" rx="12" fill="#f0fdf4" stroke="#bbf7d0" stroke-dasharray="6 4"/>
+  <text x="362" y="100" class="s" font-weight="600" fill="#15803d">stage 1 · multiply (cycle T)</text>
+  <rect x="730" y="80" width="230" height="200" rx="12" fill="#fff7ed" stroke="#fed7aa" stroke-dasharray="6 4"/>
+  <text x="742" y="100" class="s" font-weight="600" fill="#c2410c">stage 2 · accumulate (T+1)</text>
+
+  <!-- weight write port and banks -->
+  <rect x="30" y="100" width="150" height="60" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="105" y="124" text-anchor="middle" class="t">weight write</text>
+  <text x="105" y="143" text-anchor="middle" class="m">w_we w_bank w_data</text>
+  <rect x="220" y="96" width="100" height="34" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="270" y="118" text-anchor="middle" class="m" font-weight="700">w0_q</text>
+  <rect x="220" y="140" width="100" height="34" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="270" y="162" text-anchor="middle" class="m" font-weight="700">w1_q</text>
+  <g stroke="#7c3aed" stroke-width="2" stroke-dasharray="5 4" fill="none">
+    <path d="M180,122 L196,122 L196,113 L218,113" marker-end="url(#aP)"/>
+    <path d="M196,122 L196,157 L218,157" marker-end="url(#aP)"/>
+  </g>
+
+  <!-- mux -->
+  <path d="M370,104 L398,116 L398,154 L370,166 z" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <line x1="320" y1="113" x2="368" y2="113" stroke="#7c3aed" stroke-width="2" marker-end="url(#aP)"/>
+  <line x1="320" y1="157" x2="368" y2="157" stroke="#7c3aed" stroke-width="2" marker-end="url(#aP)"/>
+  <text x="404" y="128" class="m" font-size="10.5">w_sel</text>
+
+  <!-- multiplier -->
+  <path d="M398,135 L450,135 L450,174" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#aP)"/>
+  <circle cx="450" cy="200" r="24" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="450" y="208" text-anchor="middle" class="op">×</text>
+
+  <!-- valid gate -->
+  <line x1="474" y1="200" x2="504" y2="200" stroke="#16a34a" stroke-width="2.5" marker-end="url(#aG)"/>
+  <rect x="506" y="180" width="76" height="40" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="544" y="198" text-anchor="middle" class="m" font-size="10.5">a_vld_i ?</text>
+  <text x="544" y="212" text-anchor="middle" class="m" font-size="10.5">mult : 0</text>
+
+  <!-- prod_q -->
+  <line x1="582" y1="200" x2="610" y2="200" stroke="#16a34a" stroke-width="2.5" marker-end="url(#aG)"/>
+  <rect x="612" y="178" width="90" height="44" rx="6" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
+  <text x="657" y="205" text-anchor="middle" class="m" font-weight="700">prod_q</text>
+  <path d="M612,214 L620,218 L612,222" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+
+  <!-- ps_i from above -->
+  <rect x="760" y="20" width="160" height="44" rx="10" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+  <text x="840" y="40" text-anchor="middle" class="t">ps_i</text>
+  <text x="840" y="56" text-anchor="middle" class="s">from the PE above</text>
+  <line x1="790" y1="64" x2="790" y2="174" stroke="#ea580c" stroke-width="2.5" marker-end="url(#aO)"/>
+
+  <!-- adder -->
+  <line x1="702" y1="200" x2="764" y2="200" stroke="#16a34a" stroke-width="2.5" marker-end="url(#aG)"/>
+  <circle cx="790" cy="200" r="24" fill="#ffedd5" stroke="#ea580c" stroke-width="2.5"/>
+  <text x="790" y="209" text-anchor="middle" class="op">+</text>
+
+  <!-- ps_o reg and output -->
+  <line x1="814" y1="200" x2="844" y2="200" stroke="#ea580c" stroke-width="2.5" marker-end="url(#aO)"/>
+  <rect x="846" y="178" width="80" height="44" rx="6" fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
+  <text x="886" y="205" text-anchor="middle" class="m" font-weight="700">ps_o</text>
+  <path d="M846,214 L854,218 L846,222" fill="none" stroke="#ea580c" stroke-width="1.5"/>
+  <line x1="886" y1="222" x2="886" y2="298" stroke="#ea580c" stroke-width="2.5" marker-end="url(#aO)"/>
+  <rect x="810" y="300" width="150" height="44" rx="10" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+  <text x="885" y="320" text-anchor="middle" class="t">ps_o ↓</text>
+  <text x="885" y="336" text-anchor="middle" class="s">to the PE below</text>
+
+  <!-- overflow -->
+  <path d="M772,217 L740,300" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#aR)"/>
+  <rect x="650" y="302" width="140" height="44" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="720" y="322" text-anchor="middle" class="m" font-weight="700">ovf_o</text>
+  <text x="720" y="338" text-anchor="middle" class="s">→ ovf_sticky</text>
+
+  <!-- activation in and its paths -->
+  <rect x="30" y="232" width="150" height="74" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="105" y="254" text-anchor="middle" class="t">activation in</text>
+  <text x="105" y="272" text-anchor="middle" class="m">a_i a_bank_i</text>
+  <text x="105" y="288" text-anchor="middle" class="m">a_vld_i a_last_i</text>
+  <line x1="180" y1="256" x2="544" y2="256" stroke="#2563eb" stroke-width="2.5"/>
+  <line x1="544" y1="256" x2="544" y2="222" stroke="#2563eb" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#aB)"/>
+  <path d="M410,256 L410,200 L424,200" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#aB)"/>
+  <line x1="384" y1="256" x2="384" y2="168" stroke="#2563eb" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#aB)"/>
+  <text x="330" y="274" class="m" font-size="10.5">a_bank_i</text>
+  <text x="402" y="274" class="m" font-size="10.5">a_i</text>
+  <text x="524" y="274" class="m" font-size="10.5">a_vld_i</text>
+  <g fill="#2563eb"><circle cx="384" cy="256" r="4"/><circle cx="410" cy="256" r="4"/><circle cx="260" cy="256" r="4"/></g>
+  <path d="M260,256 L260,378 L328,378" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#aB)"/>
+  <rect x="330" y="356" width="220" height="44" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="440" y="383" text-anchor="middle" class="m" font-weight="700">a_o a_bank_o a_vld_o a_last_o</text>
+  <path d="M330,392 L338,396 L330,400" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+  <line x1="550" y1="378" x2="598" y2="378" stroke="#2563eb" stroke-width="2.5" marker-end="url(#aB)"/>
+  <text x="604" y="383" class="t">to the PE on the right →</text>
+  <text x="604" y="400" class="s">the bank tag travels with the activation</text>
+</svg>
